@@ -1,0 +1,401 @@
+.dashboard{
+display:grid;
+grid-template-columns:240px 1fr;
+height:100vh;
+background:#0f0f0f;
+color:#eee;
+font-family:system-ui;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+background:#121212;
+padding:25px;
+border-right:1px solid #222;
+display:flex;
+flex-direction:column;
+}
+
+.logo{
+display:flex;
+align-items:center;
+gap:10px;
+margin-bottom:30px;
+font-size:20px;
+}
+
+.sidebar ul{
+list-style:none;
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+.sidebar li{
+display:flex;
+align-items:center;
+gap:10px;
+padding:10px 12px;
+border-radius:8px;
+cursor:pointer;
+transition:0.2s;
+}
+
+.sidebar li:hover{
+background:#1f1f1f;
+transform:translateX(4px);
+}
+
+.sidebar a{
+text-decoration:none;
+color:#ddd;
+}
+
+.logout{
+margin-top:auto;
+color:#ff6b6b;
+}
+
+
+/* MAIN */
+
+.main{
+display:flex;
+flex-direction:column;
+overflow-y:auto;
+}
+
+
+/* NAVBAR */
+
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:#161616;
+border-bottom:1px solid #222;
+}
+
+.nav-left{
+display:flex;
+align-items:center;
+gap:8px;
+font-weight:600;
+}
+
+.nav-right{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.icon-btn{
+background:#1f1f1f;
+border:none;
+padding:8px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.icon-btn:hover{
+background:#2a2a2a;
+}
+
+
+/* PLAYER PANEL */
+
+.player-panel{
+display:flex;
+align-items:center;
+gap:25px;
+padding:25px;
+background:#141414;
+border-bottom:1px solid #222;
+}
+
+.character img{
+width:110px;
+animation:float 3s infinite ease-in-out;
+}
+
+.player-stats h2{
+margin-bottom:5px;
+}
+
+#streak{
+display:flex;
+align-items:center;
+gap:6px;
+color:#ff9f43;
+}
+
+
+/* XP BAR */
+
+.xp-bar{
+height:18px;
+background:#2a2a2a;
+border-radius:12px;
+margin:10px 0;
+overflow:hidden;
+}
+
+#xpBar{
+height:100%;
+background:linear-gradient(90deg,#00c896,#00ffa6);
+width:0%;
+border-radius:12px;
+transition:width 0.6s ease;
+}
+
+
+/* QUEST BOARD */
+
+.quest-board{
+padding:25px;
+}
+
+.section-title{
+display:flex;
+align-items:center;
+gap:8px;
+margin-bottom:20px;
+}
+
+
+/* QUEST GRID */
+
+.quest-grid{
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+gap:20px;
+}
+
+/* ============================
+   QUEST CARD
+============================ */
+
+.quest-card{
+background:#1a1a1a;
+padding:18px;
+border-radius:12px;
+transition:transform 0.25s ease, box-shadow 0.25s ease;
+position:relative;
+display:flex;
+flex-direction:column;
+gap:6px;
+}
+
+/* Hover effect */
+
+.quest-card:hover{
+transform:translateY(-5px) scale(1.02);
+}
+
+
+/* Title */
+
+.quest-card h3{
+margin-bottom:4px;
+font-size:16px;
+font-weight:600;
+}
+
+
+/* ============================
+   QUEST ACTIONS
+============================ */
+
+.quest-actions{
+display:flex;
+gap:10px;
+margin-top:12px;
+}
+
+
+/* ============================
+   COMPLETE BUTTON
+============================ */
+
+.complete-btn{
+background:#00c896;
+border:none;
+padding:8px 12px;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+color:#fff;
+transition:background 0.2s ease, transform 0.1s ease;
+}
+
+.complete-btn:hover{
+background:#00e6a8;
+transform:scale(1.05);
+}
+
+
+/* ============================
+   DELETE BUTTON
+============================ */
+
+.delete-btn{
+background:#ff4d4d;
+border:none;
+padding:8px 12px;
+border-radius:6px;
+cursor:pointer;
+font-weight:600;
+color:#fff;
+transition:background 0.2s ease, transform 0.1s ease;
+}
+
+.delete-btn:hover{
+background:#ff2b2b;
+transform:scale(1.05);
+}
+
+
+/* ============================
+   QUEST HEADER
+============================ */
+
+.quest-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+
+/* ============================
+   CREATE BUTTON
+============================ */
+
+.create-btn{
+background:#00c896;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+display:flex;
+align-items:center;
+gap:6px;
+font-weight:600;
+color:#fff;
+transition:background 0.2s ease, transform 0.1s ease;
+}
+
+.create-btn:hover{
+background:#00e6a8;
+transform:scale(1.05);
+}
+
+
+/* ============================
+   RARITY STYLES
+============================ */
+
+.quest-card.common{
+border-left:4px solid gray;
+}
+
+.quest-card.rare{
+border-left:4px solid #3aa0ff;
+box-shadow:0 0 8px rgba(58,160,255,0.2);
+}
+
+.quest-card.epic{
+border-left:4px solid purple;
+box-shadow:0 0 10px rgba(160,0,255,0.35);
+}
+
+.quest-card.legendary{
+border-left:4px solid gold;
+box-shadow:0 0 14px rgba(255,215,0,0.6);
+animation:legendaryGlow 2s infinite alternate;
+}
+
+
+/* ============================
+   LEGENDARY GLOW
+============================ */
+
+@keyframes legendaryGlow{
+
+0%{
+box-shadow:0 0 12px rgba(255,215,0,0.6);
+}
+
+100%{
+box-shadow:0 0 22px rgba(255,215,0,0.9);
+}
+
+}
+/* MODAL */
+
+.modal{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.modal-content{
+background:#1b1b1b;
+padding:25px;
+border-radius:10px;
+width:300px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.modal-content input,
+.modal-content textarea,
+.modal-content select{
+padding:8px;
+border-radius:6px;
+border:none;
+}
+
+.modal-actions{
+display:flex;
+gap:10px;
+}
+
+.hidden{
+display:none;
+}
+
+/* ANIMATIONS */
+
+@keyframes float{
+0%{transform:translateY(0px)}
+50%{transform:translateY(-8px)}
+100%{transform:translateY(0px)}
+}
+
+@keyframes legendaryGlow{
+0%{box-shadow:0 0 10px gold}
+100%{box-shadow:0 0 25px gold}
+}
+
+.quest-complete{
+animation:questComplete 0.6s ease;
+}
+
+@keyframes questComplete{
+0%{transform:scale(1)}
+50%{
+transform:scale(1.1);
+background:#00c896;
+}
+100%{transform:scale(1)}
+}

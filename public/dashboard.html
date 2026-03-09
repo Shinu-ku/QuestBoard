@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuestBoard Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<link id="theme-style" rel="stylesheet" href="css/theme/default.css">
+
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/theme.js"></script>
+<script defer src="js/dashboard.js"></script>
+<script defer src="js/ui.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+<i data-lucide="swords"></i> QuestBoard
+</h2>
+
+<ul>
+
+<li>
+<i data-lucide="layout-dashboard"></i>
+<a href="dashboard.html">Dashboard</a>
+</li>
+
+<li>
+<i data-lucide="user"></i>
+<a href="profile.html">Profile</a>
+</li>
+
+<li>
+<i data-lucide="users"></i>
+<a href="friends.html">Friends</a>
+</li>
+
+<li onclick="logout()" class="logout">
+<i data-lucide="log-out"></i>
+Logout
+</li>
+
+</ul>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="nav-left">
+<i data-lucide="user-circle"></i>
+<span id="username">Player</span>
+</div>
+
+<div class="nav-right">
+
+<button onclick="toggleSound()" class="icon-btn">
+<i data-lucide="volume-2"></i>
+</button>
+
+<select onchange="setTheme(this.value)">
+<option value="default">Default</option>
+<option value="dark">Dark</option>
+<option value="neon">Neon</option>
+<option value="retro">Retro</option>
+</select>
+
+</div>
+
+</div>
+
+
+<!-- PLAYER PANEL -->
+
+<div class="player-panel">
+
+<div class="character">
+<img id="avatar" src="assets/characters/male1.png">
+</div>
+
+<div class="player-stats">
+
+<h2 id="level">Level 1</h2>
+
+<p id="streak">
+<i data-lucide="flame"></i>
+Streak: 0
+</p>
+
+<div class="xp-bar">
+<div id="xpBar"></div>
+</div>
+
+<p id="xp">0 / 100 XP</p>
+
+</div>
+
+</div>
+
+
+<!-- QUEST BOARD -->
+
+<div class="quest-board">
+
+<div class="quest-header">
+
+<h2 class="section-title">
+<i data-lucide="scroll-text"></i>
+Quest Board
+</h2>
+
+<button class="create-btn" onclick="openQuestModal()">
+<i data-lucide="plus"></i>
+Create Quest
+</button>
+
+</div>
+
+<div id="quests" class="quest-grid"></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- QUEST CREATION MODAL -->
+
+<div id="questModal" class="modal hidden">
+
+<div class="modal-content">
+
+<h3>Create Quest</h3>
+
+<input id="questTitle" placeholder="Quest title">
+
+<textarea id="questDesc" placeholder="Quest description"></textarea>
+
+<select id="questType">
+<option value="daily">Daily Quest</option>
+<option value="weekly">Weekly Quest</option>
+<option value="monthly">Monthly Quest</option>
+</select>
+
+<div class="modal-actions">
+
+<button onclick="createQuest()">Create</button>
+
+<button onclick="closeQuestModal()">Cancel</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- LEVEL UP POPUP -->
+
+<div id="levelPopup" class="level-popup hidden">
+
+<h2>LEVEL UP!</h2>
+
+<p id="newLevelText"></p>
+
+</div>
+
+
+
+<script>
+lucide.createIcons()
+</script>
+
+</body>
+</html>

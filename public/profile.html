@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuestBoard Profile</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/profile.css">
+<link id="theme-style" rel="stylesheet" href="css/theme/default.css">
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/theme.js"></script>
+<script defer src="js/profile.js"></script>
+<script defer src="js/ui.js"></script>
+
+</head>
+
+<body>
+
+<div class="dashboard">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2 class="logo">
+<i data-lucide="swords"></i> QuestBoard
+</h2>
+
+<ul>
+
+<li>
+<i data-lucide="layout-dashboard"></i>
+<a href="dashboard.html">Dashboard</a>
+</li>
+
+<li>
+<i data-lucide="user"></i>
+<a href="profile.html">Profile</a>
+</li>
+
+<li>
+<i data-lucide="users"></i>
+<a href="friends.html">Friends</a>
+</li>
+
+<li onclick="logout()" class="logout">
+<i data-lucide="log-out"></i>
+Logout
+</li>
+
+</ul>
+
+</div>
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<div class="nav-left">
+<i data-lucide="user-circle"></i>
+<span id="username">Player</span>
+</div>
+
+<div class="nav-right">
+
+<select onchange="setTheme(this.value)">
+<option value="default">Default</option>
+<option value="dark">Dark</option>
+<option value="neon">Neon</option>
+<option value="retro">Retro</option>
+</select>
+
+</div>
+
+</div>
+
+
+<!-- PROFILE CONTENT -->
+
+<div class="profile-container">
+
+<div class="profile-card">
+
+<img id="avatar" class="profile-avatar" src="assets/characters/male1.png">
+
+<h2 id="profileName">Player</h2>
+
+<p id="profileLevel">Level 1</p>
+
+<div class="xp-bar">
+<div id="xpBar"></div>
+</div>
+
+<p id="xpText">0 / 100 XP</p>
+
+<p id="streak">🔥 Streak: 0</p>
+
+</div>
+
+
+<!-- STATS -->
+
+<div class="stats-card">
+
+<h3>Player Stats</h3>
+
+<div class="stat">
+<span>Completed Quests</span>
+<span id="completedCount">0</span>
+</div>
+
+<div class="stat">
+<span>Active Quests</span>
+<span id="activeCount">0</span>
+</div>
+
+<div class="stat">
+<span>Failed Quests</span>
+<span id="failedCount">0</span>
+</div>
+
+</div>
+
+
+<!-- AVATAR SELECTION -->
+
+<div class="avatar-section">
+
+<h3>Choose Avatar</h3>
+
+<div class="avatar-grid">
+
+<img src="assets/characters/male1.png" onclick="setAvatar('male1.png')">
+<img src="assets/characters/male2.png" onclick="setAvatar('male2.png')">
+<img src="assets/characters/female1.png" onclick="setAvatar('female1.png')">
+<img src="assets/characters/female2.png" onclick="setAvatar('female2.png')">
+<img src="assets/characters/female3.png" onclick="setAvatar('female3.png')">
+<img src="assets/characters/female4.png" onclick="setAvatar('female4.png')">
+<img src="assets/characters/female5.png" onclick="setAvatar('female5.png')">
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+lucide.createIcons()
+</script>
+
+</body>
+</html>

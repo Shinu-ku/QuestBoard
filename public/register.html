@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuestBoard Register</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/theme.js"></script>
+<script defer src="js/register.js"></script>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="register-container">
+
+<div class="register-card">
+
+<h1 class="logo"><i data-lucide="swords"></i> Join QuestBoard</h1>
+
+<input id="username" placeholder="Username">
+
+<input id="email" type="email" placeholder="Email">
+
+<input id="password" type="password" placeholder="Password">
+
+<h3>Select Character</h3>
+
+<div class="gender-select">
+
+<button onclick="selectGender('male')">Male</button>
+
+<button onclick="selectGender('female')">Female</button>
+
+</div>
+
+<button onclick="register()">Create Account</button>
+
+<p class="register-link">
+Already have account?
+<a href="index.html">Login</a>
+</p>
+
+</div>
+
+
+<div class="character-preview">
+
+<img id="characterImg" src="assets/characters/male1.png">
+
+</div>
+
+</div>
+<script>
+lucide.createIcons()
+</script>
+</body>
+</html>

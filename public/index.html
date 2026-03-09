@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>QuestBoard Login</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/base.css">
+<link rel="stylesheet" href="css/auth.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="js/theme.js"></script>
+<script defer src="js/auth.js"></script>
+
+</head>
+
+<body>
+
+<div class="background"></div>
+
+<div class="login-container">
+
+    <div class="login-card">
+
+        <h1 class="logo"><i data-lucide="swords"></i> QuestBoard</h1>
+        <p class="subtitle">Enter the world of quests</p>
+
+        <input id="email" type="email" placeholder="Email">
+
+        <input id="password" type="password" placeholder="Password">
+
+        <button onclick="login()">Login</button>
+
+        <p class="register-link">
+            New adventurer?
+            <a href="register.html">Create Account</a>
+        </p>
+
+    </div>
+
+</div>
+<script>
+lucide.createIcons()
+</script>
+</body>
+</html>
