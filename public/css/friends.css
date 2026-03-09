@@ -1,0 +1,58 @@
+.friends-container{
+padding:30px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+.friends-card{
+background:#1a1a1a;
+padding:20px;
+border-radius:10px;
+}
+
+.friend{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px solid #333;
+}
+
+.friend:last-child{
+border-bottom:none;
+}
+
+.friend-info{
+display:flex;
+flex-direction:column;
+}
+
+.friend-name{
+font-weight:600;
+}
+
+.friend-stats{
+font-size:12px;
+color:#aaa;
+}
+
+.friend-actions{
+display:flex;
+gap:10px;
+}
+
+.friend-actions button{
+padding:6px 10px;
+border-radius:6px;
+border:none;
+cursor:pointer;
+}
+
+.accept{
+background:#00c896;
+}
+
+.reject{
+background:#ff4d4d;
+}
