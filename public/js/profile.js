@@ -15,6 +15,27 @@ avatar.src = "assets/characters/" + user.avatar
 
 }
 
+
+async function loadStats(){
+
+const res = await fetch("/api/user/stats",{
+headers:{
+Authorization: "Bearer " + localStorage.getItem("token")
+}
+})
+
+if(!res.ok) return
+
+const data = await res.json()
+
+document.getElementById("completedCount").textContent = data.completed
+document.getElementById("activeCount").textContent = data.active
+document.getElementById("failedCount").textContent = data.failed
+
+}
+
+loadStats()
+
 async function setAvatar(file){
 
 const res = await fetch("/api/user/avatar",{
