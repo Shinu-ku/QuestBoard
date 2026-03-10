@@ -17,13 +17,24 @@ avatar.src = "assets/characters/" + user.avatar
 
 async function setAvatar(file){
 
-await fetch("/api/user/avatar",{
+const res = await fetch("/api/user/avatar",{
 method:"POST",
-headers:{ "Content-Type":"application/json" },
-body:JSON.stringify({ avatar:file })
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+avatar:file
+})
 })
 
-avatar.src = "assets/characters/" + file
+const data = await res.json()
+
+if(res.ok){
+
+document.getElementById("avatar").src =
+"assets/characters/" + data.avatar
+
+}
 
 }
 

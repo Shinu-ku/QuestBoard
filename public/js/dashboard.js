@@ -369,33 +369,6 @@ function showLevelUp(level){
 }
 
 
-// ==============================
-// SOUND TOGGLE
-// ==============================
-
-function toggleSound(){
-
-  const state = localStorage.getItem("sound")
-
-  if(state === "off"){
-
-    localStorage.setItem("sound","on")
-
-    alert("Sound ON")
-
-  }else{
-
-    localStorage.setItem("sound","off")
-
-    sfx.theme.pause()
-    sfx.theme.currentTime = 0
-
-    alert("Sound OFF")
-
-  }
-
-}
-
 
 // ==============================
 // THEME SYSTEM

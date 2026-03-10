@@ -10,3 +10,30 @@ router.get("/me", auth, async (req, res) => {
 });
 
 module.exports = router;
+
+// ======================
+// UPDATE AVATAR
+// ======================
+router.post("/avatar", auth, async (req,res)=>{
+  try{
+
+    const { avatar } = req.body
+
+    const user = await User.findByIdAndUpdate(
+      req.session.userId,
+      {
+        avatar,
+        avatarType:"default"
+      },
+      { new:true }
+    )
+
+    res.json({
+      msg:"Avatar updated",
+      avatar:user.avatar
+    })
+
+  }catch(err){
+    res.status(500).json({error:err.message})
+  }
+})

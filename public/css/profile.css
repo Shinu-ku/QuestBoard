@@ -1,69 +1,184 @@
+/* =========================
+PROFILE LAYOUT
+========================= */
+
 .profile-container{
-padding:30px;
+padding:40px;
 display:grid;
-grid-template-columns:320px 1fr;
-gap:30px;
+grid-template-columns:420px 1fr;
+gap:35px;
+align-items:start;
 }
+
+
+/* =========================
+PROFILE CARD
+========================= */
 
 .profile-card{
 background:#1a1a1a;
-padding:25px;
-border-radius:12px;
+padding:40px;
+border-radius:18px;
 text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
+min-height:380px;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
 }
+
+
+/* =========================
+PROFILE AVATAR
+========================= */
 
 .profile-avatar{
-width:120px;
-border-radius:50%;
-margin-bottom:15px;
+width:180px;
+height:220px;              /* rectangular frame */
+border-radius:10px;
+margin-bottom:20px;
+
+object-fit:cover;
+object-position:top center;  /* prevents top cropping */
+
+border:3px solid #2f2f2f;
+background:#111;
 }
 
+/* =========================
+XP BAR
+========================= */
+
 .xp-bar{
-height:18px;
+height:20px;
 background:#333;
-border-radius:10px;
-margin:10px 0;
+border-radius:12px;
+margin:14px 0;
+overflow:hidden;
+width:80%;
 }
 
 #xpBar{
 height:100%;
 background:#00c896;
 width:0%;
-border-radius:10px;
+border-radius:12px;
+transition:width 0.4s ease;
 }
+
+
+/* =========================
+STATS CARD
+========================= */
 
 .stats-card{
 background:#1a1a1a;
-padding:25px;
-border-radius:12px;
+padding:30px;
+border-radius:18px;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
 
 .stat{
 display:flex;
 justify-content:space-between;
-margin-bottom:10px;
+padding:10px 0;
+border-bottom:1px solid #333;
 }
+
+.stat:last-child{
+border-bottom:none;
+}
+
+
+/* =========================
+AVATAR SECTION
+========================= */
 
 .avatar-section{
 background:#1a1a1a;
-padding:25px;
-border-radius:12px;
+padding:45px;
+border-radius:18px;
 grid-column:span 2;
+box-shadow:0 10px 25px rgba(0,0,0,0.5);
 }
+
+.avatar-section h3{
+margin-bottom:30px;
+font-size:20px;
+}
+
+
+/* =========================
+AVATAR GRID
+========================= */
 
 .avatar-grid{
-display:flex;
-gap:10px;
-flex-wrap:wrap;
+display:grid;
+grid-template-columns:repeat(auto-fill,minmax(160px,1fr));
+gap:30px;
+justify-items:center;
 }
+
+
+/* =========================
+CHARACTER CARDS
+========================= */
 
 .avatar-grid img{
-width:70px;
+width:150px;
+height:240px;
+object-fit:contain;
 cursor:pointer;
-border-radius:8px;
-transition:0.2s;
+border-radius:16px;
+border:2px solid transparent;
+background:#141414;
+padding:12px;
+transition:transform 0.25s ease, border 0.25s ease, box-shadow 0.25s ease;
+position:relative;
 }
 
+
+/* hover animation */
+
 .avatar-grid img:hover{
-transform:scale(1.1);
+transform:scale(1.08);
+border-color:#00c896;
+box-shadow:0 0 15px rgba(0,200,150,0.35);
+}
+
+
+/* =========================
+SELECTED AVATAR
+========================= */
+
+.avatar-grid img.selected{
+border-color:#00c896;
+box-shadow:0 0 18px rgba(0,200,150,0.7);
+background:#101010;
+transform:scale(1.08);
+}
+
+
+/* =========================
+PEDESTAL GLOW EFFECT
+========================= */
+
+.avatar-grid img.selected::after{
+content:"";
+position:absolute;
+bottom:-12px;
+left:50%;
+transform:translateX(-50%);
+width:70%;
+height:14px;
+border-radius:50%;
+background:radial-gradient(
+ellipse at center,
+rgba(0,200,150,0.6),
+rgba(0,200,150,0.2),
+transparent
+);
+filter:blur(5px);
+pointer-events:none;
 }

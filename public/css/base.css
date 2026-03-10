@@ -233,3 +233,28 @@ display:flex;
 align-items:center;
 gap:12px;
 }
+
+.icon-btn{
+background:#1f1f1f;
+border:none;
+padding:8px;
+border-radius:6px;
+cursor:pointer;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+}
+
+.icon-btn svg{
+width:20px;
+height:20px;
+stroke:white;
+}
+.icon-btn:hover{
+background:#2a2a2a;
+}
+
+.icon-btn:hover svg{
+stroke:#ffffff;
+}
