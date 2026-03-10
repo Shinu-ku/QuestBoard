@@ -258,3 +258,58 @@ background:#2a2a2a;
 .icon-btn:hover svg{
 stroke:#ffffff;
 }
+
+.game-guide{
+position:fixed;
+bottom:30px;
+left:30px;
+display:flex;
+align-items:flex-end;
+gap:15px;
+z-index:9999;
+animation:guideAppear .35s ease;
+}
+
+.hidden{
+display:none;
+}
+
+@keyframes guideAppear{
+from{
+opacity:0;
+transform:translateY(15px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.guide-character{
+width:110px;
+height:auto;
+}
+
+.guide-dialog{
+background:#1a1a1a;
+border:2px solid #5b8cff;
+padding:16px;
+border-radius:12px;
+max-width:280px;
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+.guide-dialog p{
+margin-bottom:10px;
+color:#e0e0e0;
+font-size:14px;
+}
+
+.guide-dialog button{
+background:#5b8cff;
+border:none;
+color:white;
+padding:6px 12px;
+border-radius:6px;
+cursor:pointer;
+}

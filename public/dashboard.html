@@ -159,16 +159,17 @@ Create Quest
 
 <textarea id="questDesc" placeholder="Quest description"></textarea>
 
-<select id="questType">
-<option value="daily">Daily Quest</option>
-<option value="weekly">Weekly Quest</option>
-<option value="monthly">Monthly Quest</option>
-</select>
+<div class="quest-type">
+
+<button class="quest-type-btn active" data-type="daily">Daily</button>
+<button class="quest-type-btn" data-type="weekly">Weekly</button>
+<button class="quest-type-btn" data-type="monthly">Monthly</button>
+
+</div>
 
 <div class="modal-actions">
 
 <button onclick="createQuest()">Create</button>
-
 <button onclick="closeQuestModal()">Cancel</button>
 
 </div>
@@ -176,7 +177,6 @@ Create Quest
 </div>
 
 </div>
-
 
 
 <!-- LEVEL UP POPUP -->

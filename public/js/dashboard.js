@@ -56,24 +56,25 @@ function playSound(sound){
 
 
 // // ==============================
-// // START THEME MUSIC
+// // Create Quest Modal
 // // ==============================
 
-// function startTheme(){
+let selectedQuestType = "daily";
 
-//   if(localStorage.getItem("sound") === "off") return
+document.querySelectorAll(".quest-type-btn").forEach(btn => {
 
-//   if(!sfx.theme.paused) return
+btn.addEventListener("click", () => {
 
-//   sfx.theme.loop = true
-//   sfx.theme.volume = 0.25
+document.querySelectorAll(".quest-type-btn")
+.forEach(b => b.classList.remove("active"));
 
-//   sfx.theme.play().catch(()=>{})
+btn.classList.add("active");
 
-// }
+selectedQuestType = btn.dataset.type;
 
-// document.body.addEventListener("click", startTheme, { once:true })
+});
 
+});
 
 // ==============================
 // LOAD USER STATS
@@ -241,7 +242,7 @@ async function createQuest(){
 
   const title = document.getElementById("questTitle").value
   const description = document.getElementById("questDesc").value
-  const questType = document.getElementById("questType").value
+  const questType = selectedQuestType
 
   if(!title){
     alert("Quest title required")
