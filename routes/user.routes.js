@@ -25,7 +25,7 @@ router.post("/avatar", auth, async (req,res)=>{
         avatar,
         avatarType:"default"
       },
-      { new:true }
+      { returnDocument: "after" }
     )
 
     res.json({
