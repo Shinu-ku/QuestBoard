@@ -56,3 +56,63 @@ background:#00c896;
 .reject{
 background:#ff4d4d;
 }
+.search-box{
+margin-bottom:15px;
+}
+
+.search-box input{
+width:100%;
+padding:8px 10px;
+border-radius:6px;
+background:#222;
+border:none;
+color:white;
+}
+
+.search-result{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:8px 0;
+border-bottom:1px solid #333;
+}
+
+.search-result button{
+background:#00c896;
+border:none;
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+}
+.leaderboard-row{
+display:flex;
+align-items:center;
+gap:12px;
+padding:10px 0;
+border-bottom:1px solid #333;
+}
+
+.rank{
+font-weight:600;
+width:40px;
+color:#aaa;
+}
+
+.player{
+display:flex;
+flex-direction:column;
+}
+
+.name{
+font-weight:600;
+}
+
+.stats{
+font-size:12px;
+color:#888;
+}
+.leaderboard-row.me{
+background:#1f1f1f;
+border-radius:6px;
+padding:10px;
+}

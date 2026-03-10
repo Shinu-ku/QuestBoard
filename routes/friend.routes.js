@@ -106,6 +106,26 @@ router.get("/list", auth, async (req,res)=>{
   res.json(user.friends);
 });
 
+// ===================
+// SEARCH USERS
+// ===================
+router.get("/search", auth, async (req,res)=>{
+  try{
 
+    const q = req.query.q || ""
+
+    const users = await User.find({
+      username: { $regex:q, $options:"i" },
+      _id: { $ne: req.session.userId }
+    })
+    .select("_id username level xp")
+    .limit(10)
+
+    res.json(users)
+
+  }catch(err){
+    res.status(500).json({error:err.message})
+  }
+})
 
 module.exports = router;

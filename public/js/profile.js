@@ -28,3 +28,15 @@ avatar.src = "assets/characters/" + file
 }
 
 loadProfile()
+
+// ==============================
+// LOGOUT
+// ==============================
+
+async function logout(){
+
+  await fetch("/api/auth/logout")
+
+  window.location.href = "/"
+
+}

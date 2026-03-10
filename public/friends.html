@@ -78,6 +78,26 @@ Logout
 
 <div class="friends-container">
 
+<!-- SEARCH PLAYERS -->
+
+<div class="friends-card">
+
+<h3>Find Players</h3>
+
+<div class="search-box">
+
+<input
+id="playerSearch"
+placeholder="Search players..."
+oninput="searchPlayers()"
+>
+
+</div>
+
+<div id="searchResults"></div>
+
+</div>
+
 <!-- FRIEND REQUESTS -->
 
 <div class="friends-card">
@@ -99,6 +119,16 @@ Logout
 
 </div>
 
+<div class="friends-card">
+
+<h3>
+<i data-lucide="trophy"></i>
+Friends Leaderboard
+</h3>
+
+<div id="leaderboard"></div>
+
+</div>
 </div>
 
 </div>
