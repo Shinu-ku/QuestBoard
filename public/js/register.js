@@ -37,13 +37,13 @@ async function register(){
 
   if(res.ok){
 
-    alert("Account created!")
+    guide("Account created!")
 
     window.location.href="index.html"
 
   }else{
 
-    alert("Registration failed")
+    guide("Registration failed")
 
   }
 

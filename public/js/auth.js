@@ -1,23 +1,24 @@
 async function login(){
 
-  const res = await fetch("/api/auth/login",{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json"
-    },
-    body:JSON.stringify({
-      email:email.value,
-      password:password.value
-    })
-  })
+const res = await fetch("/api/auth/login",{
+method:"POST",
+headers:{
+"Content-Type":"application/json"
+},
+body:JSON.stringify({
+email:email.value,
+password:password.value
+})
+})
 
-  if(res.ok){
+if(res.ok){
 
-    window.location.href = "dashboard.html"
+window.location.href = "dashboard.html"
 
-  }else{
+}else{
 
-    alert("Login failed")
+guide("Login failed. Check your credentials.");
 
-  }
+}
+
 }

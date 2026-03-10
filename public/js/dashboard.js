@@ -245,7 +245,7 @@ async function createQuest(){
   const questType = selectedQuestType
 
   if(!title){
-    alert("Quest title required")
+    guide("Quest title required")
     return
   }
 
