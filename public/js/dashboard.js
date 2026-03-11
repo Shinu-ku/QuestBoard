@@ -24,8 +24,6 @@ const questsContainer = document.getElementById("quests")
 // ==============================
 
 const sfx = {
- // theme: new Audio("/assets/sounds/Theme.mp3"),
- // battle: new Audio("/assets/sounds/Battle_Theme.mp3"),
   complete: new Audio("/assets/sounds/complete.mp3"),
   legendaryComplete: new Audio("/assets/sounds/legendary_complete.mp3"),
   levelup: new Audio("/assets/sounds/levelup.mp3"),
@@ -202,6 +200,7 @@ async function completeQuest(id, rarity, card){
     const data = await res.json()
 
     playSound(sfx.complete)
+    guide(randomMessage("questCompleted"))
 
     if(rarity === "legendary" || rarity === "epic"){
       playSound(sfx.legendaryComplete)
@@ -210,6 +209,7 @@ async function completeQuest(id, rarity, card){
     if(data.leveledUp){
       playSound(sfx.levelup)
       showLevelUp(data.level)
+       guide(randomMessage("levelUp"))
     }
 
     await loadStats()
@@ -264,6 +264,7 @@ async function createQuest(){
   if(res.ok){
     closeQuestModal()
     loadQuests()
+      guide("A new quest begins, hero.")
   }
 
 }
@@ -283,6 +284,7 @@ async function deleteQuest(id){
 
   if(res.ok){
     loadQuests()
+     guide("Quest removed from your journey.")
   }
 
 }
@@ -328,7 +330,7 @@ function startQuestTimerEngine(){
           timer.element.textContent = "Expired"
 
           playSound(sfx.expire)
-
+          guide("A quest has expired. Do not lose focus, hero.")
         }
 
         return
@@ -369,7 +371,13 @@ function showLevelUp(level){
 
 }
 
+setInterval(()=>{
 
+  if(Math.random() < 0.4){
+    guide(randomMessage("questReminder"))
+  }
+
+}, 180000) // every 30 minutes
 
 // ==============================
 // THEME SYSTEM
@@ -420,6 +428,14 @@ function init(){
   loadQuests()
 
   startQuestTimerEngine()
+
+  // Guide welcome
+  guide(randomMessage("welcome"))
+
+  // small chance of flirty compliment
+  if(Math.random() < 0.15){
+    guide(randomMessage("flirty"))
+  }
 
 }
 

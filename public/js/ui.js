@@ -1,103 +1,198 @@
 // =====================
-// Guide
+// GUIDE SYSTEM
 // =====================
+
+let lastGuideTime = 0
+const GUIDE_COOLDOWN = 8000
+
 async function loadGuide(){
 
-const res = await fetch("/components/guide.html");
-const html = await res.text();
+  const container = document.getElementById("guideContainer")
 
-document.getElementById("guideContainer").innerHTML = html;
+  if(!container) return
 
-}
+  try{
 
-loadGuide();
+    const res = await fetch("/components/guide.html")
+    const html = await res.text()
 
-window.guide = function(message, character = "female4.png"){
+    container.innerHTML = html
 
-const guide = document.getElementById("gameGuide");
-const text = document.getElementById("guideText");
-const img = document.getElementById("guideCharacter");
+  }catch(err){
 
-text.innerText = message;
+    console.error("Guide load failed:", err)
 
-img.src = "/assets/characters/" + character;
-
-guide.classList.remove("hidden");
+  }
 
 }
 
-window.closeGuide = function(){
-document.getElementById("gameGuide").classList.add("hidden");
-}
+document.addEventListener("DOMContentLoaded", loadGuide)
+
 
 // =====================
-// Theme selecter
+// GUIDE MESSAGE DISPLAY
+// =====================
+
+window.guide = function(message, character="female4.png", duration=5000){
+
+  const now = Date.now()
+
+  if(now - lastGuideTime < GUIDE_COOLDOWN) return
+
+  lastGuideTime = now
+
+  const box = document.getElementById("gameGuide")
+  const text = document.getElementById("guideText")
+  const img = document.getElementById("guideCharacter")
+
+  if(!box || !text) return
+
+  text.innerText = message
+
+  if(img){
+    img.src = "/assets/characters/" + character
+  }
+
+  box.classList.remove("hidden")
+
+  setTimeout(()=>{
+    box.classList.add("hidden")
+  }, duration)
+
+}
+
+
+// =====================
+// CLOSE GUIDE
+// =====================
+
+window.closeGuide = function(){
+
+  const box = document.getElementById("gameGuide")
+
+  if(box){
+    box.classList.add("hidden")
+  }
+
+}
+
+
+// =====================
+// GUIDE MESSAGE RANDOMIZER
+// =====================
+
+function randomMessage(type){
+
+  if(!window.GuideMessages) return ""
+
+  const list = GuideMessages[type]
+
+  if(!list || list.length === 0) return ""
+
+  return list[Math.floor(Math.random() * list.length)]
+
+}
+
+
+// =====================
+// THEME SELECTOR
 // =====================
 
 function setTheme(theme){
 
-  document.getElementById("theme-style").href =
-    "css/themes/" + theme + ".css"
+  const themeLink = document.getElementById("theme-style")
 
-  localStorage.setItem("theme",theme)
+  if(!themeLink) return
+
+  themeLink.href = "css/themes/" + theme + ".css"
+
+  localStorage.setItem("theme", theme)
+
 }
-
-const savedTheme = localStorage.getItem("theme") || "default"
-
-document.getElementById("theme-style").href =
-  "css/themes/" + savedTheme + ".css"
 
 
 // =====================
-// Sound Toggle System
+// LOAD SAVED THEME
+// =====================
+
+function loadTheme(){
+
+  const themeLink = document.getElementById("theme-style")
+
+  if(!themeLink) return
+
+  const savedTheme = localStorage.getItem("theme") || "default"
+
+  themeLink.href = "css/themes/" + savedTheme + ".css"
+
+}
+
+document.addEventListener("DOMContentLoaded", loadTheme)
+
+
+// =====================
+// SOUND TOGGLE SYSTEM
 // =====================
 
 function toggleSound(){
 
-const icon = document.getElementById("soundIcon")
+  const icon = document.getElementById("soundIcon")
 
-const state = localStorage.getItem("sound")
+  if(!icon) return
 
-if(state === "off"){
+  const state = localStorage.getItem("sound")
 
-localStorage.setItem("sound","on")
+  if(state === "off"){
 
-theme.play().catch(()=>{})
+    localStorage.setItem("sound","on")
 
-icon.setAttribute("data-lucide","volume-2")
+    if(window.theme){
+      theme.play().catch(()=>{})
+    }
 
-}else{
+    icon.setAttribute("data-lucide","volume-2")
 
-localStorage.setItem("sound","off")
+  }else{
 
-theme.pause()
+    localStorage.setItem("sound","off")
 
-icon.setAttribute("data-lucide","volume-x")
+    if(window.theme){
+      theme.pause()
+    }
+
+    icon.setAttribute("data-lucide","volume-x")
+
+  }
+
+  if(window.lucide){
+    lucide.createIcons()
+  }
 
 }
 
-lucide.createIcons()
-
-}
 
 // =====================
-// Sound Icon State
+// INIT SOUND ICON
 // =====================
 
 function initSoundIcon(){
 
-const icon = document.getElementById("soundIcon")
+  const icon = document.getElementById("soundIcon")
 
-if(!icon) return
+  if(!icon) return
 
-const state = localStorage.getItem("sound")
+  const state = localStorage.getItem("sound")
 
-if(state === "off"){
-icon.setAttribute("data-lucide","volume-x")
-}else{
-icon.setAttribute("data-lucide","volume-2")
+  if(state === "off"){
+    icon.setAttribute("data-lucide","volume-x")
+  }else{
+    icon.setAttribute("data-lucide","volume-2")
+  }
+
+  if(window.lucide){
+    lucide.createIcons()
+  }
+
 }
 
-lucide.createIcons()
-
-}
+document.addEventListener("DOMContentLoaded", initSoundIcon)
