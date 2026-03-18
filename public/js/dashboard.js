@@ -272,20 +272,25 @@ async function createQuest(){
 // ==============================
 // DELETE QUEST
 // ==============================
-
-
 async function deleteQuest(id){
 
-  if(!confirm("Delete this quest?")) return
+const confirmDelete = await guideConfirm(
+"Are you sure you want to abandon this quest?"
+)
 
-  const res = await fetch("/api/quests/delete/" + id,{
-    method:"DELETE"
-  })
+if(!confirmDelete) return
 
-  if(res.ok){
-    loadQuests()
-     guide("Quest removed from your journey.")
-  }
+const res = await fetch("/api/quests/delete/" + id,{
+method:"DELETE"
+})
+
+if(res.ok){
+
+loadQuests()
+
+guide("Quest removed from your journey.")
+
+}
 
 }
 

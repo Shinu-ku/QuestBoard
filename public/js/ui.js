@@ -1,3 +1,4 @@
+let guideTimer = null
 // =====================
 // GUIDE SYSTEM
 // =====================
@@ -35,32 +36,82 @@ document.addEventListener("DOMContentLoaded", loadGuide)
 
 window.guide = function(message, character="female4.png", duration=5000){
 
-  const now = Date.now()
+const box = document.getElementById("gameGuide")
+const text = document.getElementById("guideText")
+const img = document.getElementById("guideCharacter")
 
-  if(now - lastGuideTime < GUIDE_COOLDOWN) return
+const yes = document.getElementById("guideYes")
+const no = document.getElementById("guideNo")
+const close = document.getElementById("guideClose")
 
-  lastGuideTime = now
+if(!box || !text) return
 
-  const box = document.getElementById("gameGuide")
-  const text = document.getElementById("guideText")
-  const img = document.getElementById("guideCharacter")
+// stop previous timers
+if(guideTimer){
+clearTimeout(guideTimer)
+guideTimer = null
+}
 
-  if(!box || !text) return
+text.innerText = message
+img.src = "/assets/characters/" + character
 
-  text.innerText = message
+yes.style.display = "none"
+no.style.display = "none"
+close.style.display = "inline-block"
 
-  if(img){
-    img.src = "/assets/characters/" + character
-  }
+box.classList.remove("hidden")
 
-  box.classList.remove("hidden")
-
-  setTimeout(()=>{
-    box.classList.add("hidden")
-  }, duration)
+guideTimer = setTimeout(()=>{
+box.classList.add("hidden")
+guideTimer = null
+}, duration)
 
 }
 
+// =====================
+// Guide Confirmation Function
+// =====================
+
+window.guideConfirm = function(message){
+
+return new Promise((resolve)=>{
+
+const box = document.getElementById("gameGuide")
+const text = document.getElementById("guideText")
+
+const yes = document.getElementById("guideYes")
+const no = document.getElementById("guideNo")
+const close = document.getElementById("guideClose")
+
+if(!box || !text) return resolve(false)
+
+// cancel any existing auto-close timer
+if(guideTimer){
+clearTimeout(guideTimer)
+guideTimer = null
+}
+
+text.innerText = message
+
+yes.style.display = "inline-block"
+no.style.display = "inline-block"
+close.style.display = "none"
+
+box.classList.remove("hidden")
+
+yes.onclick = ()=>{
+box.classList.add("hidden")
+resolve(true)
+}
+
+no.onclick = ()=>{
+box.classList.add("hidden")
+resolve(false)
+}
+
+})
+
+}
 
 // =====================
 // CLOSE GUIDE
